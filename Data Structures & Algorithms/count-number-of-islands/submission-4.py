@@ -1,0 +1,27 @@
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        res = 0
+        def conquer(i,j):
+            if i in range(len(grid)) and j in range(len(grid[0])):
+                if grid[i][j] == "1":
+                    grid[i][j] = '#'
+                elif grid[i][j] == "0" or grid[i][j] == "#":
+                    return
+            else:
+                return
+            
+
+            conquer(i+1, j)
+            conquer(i-1, j)
+            conquer(i, j-1)
+            conquer(i, j+1)
+
+
+
+
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if grid[i][j] == "1":
+                    res += 1
+                    conquer(i,j)
+        return res
